@@ -4,6 +4,16 @@ import agent from "../agent";
 import { connect } from "react-redux";
 import { ITEM_FAVORITED, ITEM_UNFAVORITED } from "../constants/actionTypes";
 
+const VerifiedDisplay = (props) => {
+  if (!props.seller) {
+    return null;
+  }
+
+  return props.seller.isVerified ? (<li><img
+    src={"verified_seller.svg"}
+  />TOP SELLER</li>) : null
+};
+
 const mapDispatchToProps = (dispatch) => ({
   favorite: (slug) =>
     dispatch({
@@ -54,6 +64,9 @@ const ItemPreview = (props) => {
               className="user-pic rounded-circle pr-1"
             />
           </Link>
+          <VerifiedDisplay
+                seller={item.seller}
+              />
           <button className="btn btn-outline-secondary" onClick={handleClick}>
             <i className="ion-heart"></i> {item.favoritesCount}
           </button>
