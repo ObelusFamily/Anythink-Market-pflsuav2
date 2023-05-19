@@ -31,9 +31,6 @@ router.put("/user", auth.required, function(req, res, next) {
       if (typeof req.body.user.email !== "undefined") {
         user.email = req.body.user.email;
       }
-      if(typeof req.body.user.isVerified !== "undefined"){
-        user.isVerified = req.body.user.isVerified;
-      }
       if (typeof req.body.user.bio !== "undefined") {
         user.bio = req.body.user.bio;
       }
